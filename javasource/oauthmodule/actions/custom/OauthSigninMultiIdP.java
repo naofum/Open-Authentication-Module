@@ -88,6 +88,9 @@ public class OauthSigninMultiIdP extends RequestHandler {
 			else if(pathParameters[1].equals("facebook")){
 				new GetAccessCodeFacebook().getCode(UUIDstate, servletResponse);
 			}
+			else if(pathParameters[1].equals("cognito")){
+				new GetAccessCodeCognito().getCode(UUIDstate, servletResponse);
+			}
 			else{
 				Core.getLogger("OAuthSignin").error("Unkown request path parameter");
 				throw new ServletException("Unkown request path parameter");

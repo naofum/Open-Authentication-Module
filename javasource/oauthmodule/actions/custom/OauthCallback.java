@@ -48,6 +48,7 @@ public class OauthCallback extends RequestHandler{
 	private final String USERINFOURI_GOOGLE =  Constants.getUserInfoURI_Google();
 	private final String USERINFOURI_LINKEDIN = Constants.getUserInfoURI_Linkedin();
 	private final String USERINFOURI_FACEBOOK = Constants.getUserInfoURI_Facebook();
+	private final String USERINFOURI_COGNITO =  Constants.getUserInfoURI_Cognito();
 	private final String UNAUTHHTML = Constants.getUnauthorizedAccessPage();
 	private final String COOKIEHTML = Constants.getCookieErrorPage();
 	private final String STATEHTML = Constants.getStateErrorPage();
@@ -171,6 +172,10 @@ public class OauthCallback extends RequestHandler{
 				GetAccessTokenFacebook accessTokenFacebook = new GetAccessTokenFacebook(code);
 				body = accessTokenFacebook.getResult();
 			}
+			else if(pathParameters[1].equals("cognito")){
+				GetAccessTokenCognito accessTokenCognito = new GetAccessTokenCognito(code);
+				body = accessTokenCognito.getResult();
+			}
 			else{
 				Core.getLogger("OauthCallback").error("Unkown request path parameter");
 				throw new ServletException("Unkown request path parameter");
@@ -228,6 +233,10 @@ public class OauthCallback extends RequestHandler{
 				Core.getLogger("OauthCallback").trace("Get userinfo from Facebook");
 				userInfoString = geturi.get(new StringBuilder(USERINFOURI_FACEBOOK).append(accessToken).toString());
 			}
+			else if(pathParameters[1].equals("cognito")){
+				Core.getLogger("OauthCallback").trace("Get userinfo from Cognito");
+				userInfoString = geturi.get(USERINFOURI_COGNITO, accessToken);
+			}
 			else{
 				Core.getLogger("OauthCallback").error("Unkown request path parameter");
 				throw new ServletException("Unkown request path parameter");
@@ -259,6 +268,9 @@ public class OauthCallback extends RequestHandler{
 			}
 			else if(pathParameters[1].equals("facebook")){
 				 user =resolveUser(context, jsonObj.get(configuration.getUserId_Facebook()).toString(),configuration);
+			}
+			else if(pathParameters[1].equals("cognito")){
+				 user =resolveUser(context, jsonObj.get(configuration.getUserId_Cognito()).toString(),configuration);
 			}
 
 			if(user != null){

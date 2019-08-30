@@ -23,4 +23,13 @@ public class GetHttpRequest {
 
 	}
 
+	/*
+	 *  makes a GET request to url and returns body as a string
+	 */
+	protected String get(String url, String token) throws ClientProtocolException, IOException {
+		Core.getLogger("OAuthCallback").trace("URI is: "+ url);
+		return new ExecuteHttpRequest().execute(new HttpGet(url), token);
+
+	}
+
 }

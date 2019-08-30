@@ -1,25 +1,31 @@
 ## Open Authentication Module
+
+##version 1.3.a
+
+- Converted to Mx 8.0.0.
+- Added Amazon Cognito authentication.
+
 <table>
 <tr> 
     <td bgcolor="#DDD"> Name</td><td>Open Authentication Module</td>
 </tr>
 <tr> 
-    <td bgcolor="#DDD"> Author</td><td>Erwin 't Hoen</td>
+    <td bgcolor="#DDD"> Author</td><td>naofum</td>
 </tr>
 <tr> 
-    <td bgcolor="#DDD"> Company</td><td>FlowFabric</td>
+    <td bgcolor="#DDD"> Company</td><td></td>
 </tr>
 <tr> 
     <td bgcolor="#DDD"> Type</td><td>Module</td>
 </tr>
 <tr> 
-    <td bgcolor="#DDD"> Latest version</td><td>1.3</td>
+    <td bgcolor="#DDD"> Latest version</td><td>1.3.a</td>
 </tr>
 <tr> 
-    <td bgcolor="#DDD"> Package name</td><td>OAuthModule_v1.3.mpk</td>
+    <td bgcolor="#DDD"> Package name</td><td>OAuthModule_v1.3.a.mpk</td>
 </tr>
 <tr> 
-    <td bgcolor="#DDD"> Released</td><td>28-09-2016</td>
+    <td bgcolor="#DDD"> Released</td><td>30-08-2019</td>
 </tr>
 </table>
 
@@ -133,7 +139,7 @@ To implement your own resolve user logic either adapt the microflow ResolveUserB
 ## Dependencies
  
 
-1. Mendix 5.8.1 environment
+1. Mendix 8.0.0 environment
 2. Mx Model Reflection module
 3. Community Commons module
 4. apache-httpcomponents-httpclient.jar
